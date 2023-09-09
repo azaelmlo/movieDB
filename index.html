@@ -5,9 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
 </head>
-<body>
-    <h1>platzi movies</h1>
+<body id="bodyMovie">
+    <h1>platzi movies v4.2.1</h1>
+    <div id="contentBienvenido"></div>  
 
+    <template id="encabezadoNivelDos">
+        <h2></h2>
+    </template>
+    <template id="encabezadoNivelTres">
+        <h3></h3>
+    </template>
+
+    <!-- b u s q u e d a  -->
+    <div id="contentFormulario">
+        <form id="buscadorPelis">
+            <input type="text" id="buscar" name="busqueda"  > 
+            <input type="submit" value="Enviar">
+        </form> 
+    </div>
+    
+    <div id="contentBusqueda">
+        <template id="templateBusqueda">
+            <div class="unResultado">
+                <p></p>
+                <img>
+            </div>
+        </template> 
+    </div>
+
+    <!-- p o p u l a r e s -->
+    
     <div id="contentTendencias">
         <template id="templateTendencias">
             <div class="tendenciasMovie">
@@ -17,11 +44,55 @@
         </template>   
     </div>
 
+    <!-- D e t a l l e s   d e   u n a   p e l i -->
+    
+    <div id="contentDetailsUnaPeli">
+        <template id="templateDetails">
+            <div class="unDetail">
+                <img>
+                <div class="masDetalles">
+                    <h3></h3>
+                    <p class="detailUno"></p>
+                    <p class="detailDos"></p>
+                    <p class="detailTres"></p>
+                    <ul></ul>
+                    <h4>Películas similares</h4>
+                    <div class="relacionadasContent"></div>
+                </div>
+            </div>
+        </template>   
+    </div>
 
+    <!-- c a t e g o r i a s -->
+    <div id="contentCategorias">
+        <div id="contentPeliculasDeUnaCategoria">
+            <template id="templateUnaCategoria">
+                <div class="unaPeliDeCategoria">
+                    <p></p>
+                    <img>
+                </div>
+            </template> 
+        </div>
+        <div id="todasLasCategorias">
+            <ul id="listCategoriaMovie">
+                <template id="templateCategoria">
+                    <li class="unaCategoriaMovie">
+                        <a></a>
+                    </li>
+                </template>   
+            </ul>   
+        </div>
+    </div>
 
-    <!-- primer push  -->
+    <!-- c a t e g o r i a s -->
+    
+
+    <!-- scrips  -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/secrets.js"></script>
+    <script src="js/nodes.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
     
 </body>
 </html>

@@ -212,6 +212,12 @@ const verPeliculasPorSearch = async (query) => {
 // v e r   d e t a l l e   d e   u n a   p e l i c u l a 
 // v e r   d e t a l l e   d e   u n a   p e l i c u l a 
 
+const getRelatedMovies = async (id) => {
+  const {data} = await api('movie/' + id + '/recommendations');
+  const relatedMovies = data.results;  
+  variasPelis(relatedMovies, template, fragmentoRelacionado); 
+}
+
 const verPelicula = async (id) => {
   const {data : movie} = await api('movie/' + id);
   
@@ -232,8 +238,3 @@ const verPelicula = async (id) => {
 }
  
 
-const getRelatedMovies = async (id) => {
-  const {data} = await api('movie/' + id + '/recommendations');
-  const relatedMovies = data.results;  
-  variasPelis(relatedMovies, template, fragmentoRelacionado); 
-}

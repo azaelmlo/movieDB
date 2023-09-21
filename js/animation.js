@@ -1,9 +1,10 @@
-
-
 const cargarTendencias = (entradas) => {
+    console.log(entradas);
     entradas.forEach(entrada => {
         if (entrada.isIntersecting) {
-            console.log("la imagen esta en el viewport")
+            entrada.target.classList.add('visible');
+        } else {
+            entrada.target.classList.remove('visible');
         }
         
     });
@@ -16,7 +17,7 @@ const observador = new IntersectionObserver(cargarTendencias, {
 });
 
 
-observador.observe(contentTendencias);
+observador.observe(contentCategorias);
 
 // contentCategorias
 // contentTendencias 

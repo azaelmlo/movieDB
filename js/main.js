@@ -84,8 +84,8 @@ const asignarTituloNivelTres = (titNivTres, contentDeTitTres) => {
   }
 
   // cuando tienes varias pelis 
-const variasPelis = (movies, template, fragmento) => {
-    fragmento.innerHTML = '';
+const variasPelis = (movies, template) => {
+    
       movies.forEach( movie => {
             template.querySelector('p').innerHTML = movie.title;
            
@@ -104,13 +104,14 @@ const variasPelis = (movies, template, fragmento) => {
             fragmento.appendChild(clone);
         });
 
+       return fragmento;
+
     }
 
 // armando lista de categorias
 
-const creaListaDeCategorias = (genres, template, fragmento) => {
+const creaListaDeCategorias = (genres, template) => {
 
-  fragmento.innerHTML = '';
 
   genres.forEach( genre => {
     const clone = template.cloneNode(true);
@@ -123,7 +124,26 @@ const creaListaDeCategorias = (genres, template, fragmento) => {
      fragmento.appendChild(clone);
   });
 
+  return fragmento;
 }
+
+// a s i g n a n d o   f o n d o
+// a s i g n a n d o   f o n d o
+
+
+let index = 0;
+
+const changeBackgroundImage = (movies) => {
+  const posterPath = 'https://image.tmdb.org/t/p/w500' + movies[index].poster_path;
+  primerFondo[0].style.backgroundImage = "url(" + posterPath + ")";
+
+  index++;
+  if (index >= movies.length) {
+    index = 0;
+  }
+};
+
+
  
 // a r r o j a n d o   t e n d e n c i a s 
 // a r r o j a n d o   t e n d e n c i a s 
@@ -131,9 +151,14 @@ const creaListaDeCategorias = (genres, template, fragmento) => {
 const getTrendingMoviesPreview = async () => { 
   const {data} = await api('trending/all/day');
   const movies = data.results;  
-  variasPelis(movies, template, fragmento);
+  const trends = variasPelis(movies, template);
+  changeBackgroundImage(movies)
+  setInterval( () => {
+    changeBackgroundImage(movies);
+  }, 5000)
+
   contentTendencias.innerHTML = '';
-  contentTendencias.appendChild(fragmento);
+  contentTendencias.appendChild(trends);
 
 asignarTituloNivelTres('Tendencias', contentTendencias);
 
@@ -148,10 +173,11 @@ const getCategoriasMovies = async () => {
   const {data} = await api('genre/movie/list');
   const genres = data.genres; 
 
-  creaListaDeCategorias(genres, templateCate, fragmentoCate);
+  const listaDeCategorias = creaListaDeCategorias(genres, templateCate);
 
   listaCategorias.innerHTML = '';
-  listaCategorias.appendChild(fragmentoCate);
+  listaCategorias.appendChild(listaDeCategorias);
+
   asignarTituloNivelTres('Todas las categorías', todasLasCategorias);
 }
 
@@ -167,9 +193,9 @@ const getCategoryMoviesPreview = async (categoryId, categoryName) => {
     }
   });
   const movies = data.results;   
-  variasPelis(movies, templatePeliculasUnaCat, fragmentoPeliculasUnaCat);
+  const pelisPorCate = variasPelis(movies, templatePeliculasUnaCat);
   contentPeliculasUnaCat.innerHTML = '';
-  contentPeliculasUnaCat.appendChild(fragmentoPeliculasUnaCat);
+  contentPeliculasUnaCat.appendChild(pelisPorCate);
 
   asignarTituloNivelTres('Peliculas de ' + categoryName, contentPeliculasUnaCat);
     
@@ -200,10 +226,10 @@ const verPeliculasPorSearch = async (query) => {
     }
   });
   const movies = data.results;   
-  variasPelis(movies, templateBusqueda, fragmentoBusqueda);
-  contentBusqueda.innerHTML = '';
-  contentBusqueda.appendChild(fragmentoBusqueda);
+  const busqueda = variasPelis(movies, templateBusqueda);
 
+  contentBusqueda.innerHTML = '';
+  contentBusqueda.appendChild(busqueda);
   asignarTituloNivelTres('Peliculas de ' + query, contentBusqueda);
     
 }
@@ -212,10 +238,10 @@ const verPeliculasPorSearch = async (query) => {
 // v e r   d e t a l l e   d e   u n a   p e l i c u l a 
 // v e r   d e t a l l e   d e   u n a   p e l i c u l a 
 
-const getRelatedMovies = async (id) => {
+async function getRelatedMovies(id) { 
   const {data} = await api('movie/' + id + '/recommendations');
-  const relatedMovies = data.results;  
-  variasPelis(relatedMovies, template, fragmentoRelacionado); 
+  const related = data.results;  
+  return variasPelis(related, template); 
 }
 
 const verPelicula = async (id) => {
@@ -227,14 +253,17 @@ const verPelicula = async (id) => {
   clone.querySelector('.detailDos').innerHTML = movie.overview;
   clone.querySelector('img').src = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
   clone.querySelector('img').alt = movie.title;
-  
-  creaListaDeCategorias(movie.genres, templateCate, fragmentoCate);
-  clone.querySelector('ul').appendChild(fragmentoCate);
-  getRelatedMovies(id);
-  clone.querySelector('.relacionadasContent').appendChild(fragmentoRelacionado);
-  fragmentoDetails.appendChild(clone);
+
+  const ListaDeCategorias = creaListaDeCategorias(movie.genres, templateCate);
+  clone.querySelector('ul').appendChild(ListaDeCategorias);
+
+  const relatedMovies = await getRelatedMovies(id);
+  clone.querySelector('.relacionadasContent').appendChild(relatedMovies);
+
+  fragmentoMovieDetail.appendChild(clone);
   contentDetailsUnaPeli.innerHTML = '';
-  contentDetailsUnaPeli.appendChild(fragmentoDetails);
+  contentDetailsUnaPeli.appendChild(fragmentoMovieDetail);
+
 }
  
 

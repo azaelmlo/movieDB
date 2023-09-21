@@ -1,0 +1,256 @@
+:root {
+    --grisBack: #2C2C2D;
+    --textChico: 0.8em;
+    --textMediano: 1em;
+    --textoGrande: 3.4em;
+    --textShadow: 0 5px 10px #3f4551;
+}
+
+.pagehome { background-color: var(--grisBack); }
+
+* { box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase; }
+
+body {  
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start; }
+
+h1 { width: 100%;
+height: auto; 
+
+position: relative;
+z-index: 88;
+
+letter-spacing: 3px;
+font-size: var(--textChico);
+margin-top: 15px;
+text-shadow: var(--textShadow);
+
+color: white;
+text-align: center; }
+
+.primerFondo { height: 100vh;
+    width: 100%;
+    opacity: 0.9;
+
+    position: absolute;
+    z-index: 11;
+
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed; }
+
+.contentBienvenido { width: 100%;
+height: 60vh;
+
+color: white;
+text-align: center;
+
+position: relative;
+z-index: 55;
+
+display: flex;
+justify-content: center;
+align-items: center; }
+
+.contentBienvenido h2 { font-size: var(--textoGrande);
+letter-spacing: 2.3px;
+text-shadow: var(--textShadow);
+
+position: fixed; }
+
+/* animacion scroll */
+
+
+/* c o n t e n t  f o r m u l a r i o */
+/* c o n t e n t  f o r m u l a r i o */
+/* c o n t e n t  f o r m u l a r i o */
+
+
+.contentFormulario { width: 90%;
+    height: auto; 
+    padding: 30px;
+
+    position: fixed;
+    z-index: 88;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: white;
+    text-align: center;
+
+    background-image: linear-gradient(to bottom right, #332B68, #3578A9, #332A68);
+    box-shadow: 0px 30px 40px -15px #171723;
+    border-radius: 10px; }
+
+
+    .contentFormulario form { width: 100%;
+    height: auto; }
+
+    .contentFormulario form .textInput { width: 75%;
+    background-color: transparent;
+    border-width: 0.5px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: white;
+    border-style: dotted; }
+
+    .contentFormulario form .envioForm { width: 20%;
+        height: 40px;
+        background-color: transparent;
+        border-width: 0px;
+        color: transparent;
+    
+    position: relative; }
+
+    .contentFormulario form .envioForm:before { content: "";
+        background-color: white;
+    color: white;
+text-align: center;
+
+ position: absolute;
+left: 0px;
+top: 0px; }
+
+
+
+/* t e n d e n c i a s */
+/* t e n d e n c i a s */
+/* t e n d e n c i a s */
+
+
+.contentTendencias { width: 80%;
+    height: auto; 
+    padding: 0px 30px 30px;
+
+    position: relative;
+    z-index: 55;
+
+    color: white;
+    text-align: center;
+
+    background-color: var(--grisBack);
+    box-shadow: 0px 30px 40px 5px #171723;
+    border-radius: 10px; }
+
+
+    .contentTendencias h3, .contentCategorias .todasLasCategorias h3 { font-size: var(--textMediano);
+    letter-spacing: 5px;
+    margin: 20px auto 25px;
+    color: white; }
+
+    .contentTendencias .tendenciasMovie { width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    
+    position: relative; }
+
+    .contentTendencias .tendenciasMovie p { 
+        position: absolute;
+        z-index: 88;
+        left: 50%;
+        top: 50%;
+
+        font-size: var(--textMediano);
+        letter-spacing: 1.5px;
+        text-shadow: var(--textShadow);
+
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: 0.7s;
+        transition-property: opacity;
+     }
+
+     .contentTendencias .tendenciasMovie:hover p { 
+        opacity: 1;
+     }
+
+     
+    .contentTendencias .tendenciasMovie img {
+        width: 100%;
+        height: auto;
+
+        position: relative;
+        z-index: 55;
+
+        opacity: 1;
+        transition: 0.7s;
+        transition-property: opacity;
+
+        border-radius: 10px;
+    }
+
+    .contentTendencias .tendenciasMovie:hover img {
+        opacity: 0.5;
+    }
+
+    .slider { width: 100%; }
+
+/* c o n t e n t  c a t e g o r i a s  */
+/* c o n t e n t  c a t e g o r i a s  */
+/* c o n t e n t  c a t e g o r i a s  */
+
+
+.contentCategorias { width: 90%;
+height: auto;
+padding-bottom: 170px;
+
+margin-top: 40px;
+padding-top: 30px;
+
+position: relative; }
+
+.contentCategorias:before { content: "";
+width: 100vw;
+height: 100%;
+
+position: absolute;
+z-index: -1;
+top: 0px;
+left: 50%;
+transform: translateX(-50%);
+background-color: #485163; }
+
+.contentCategorias .todasLasCategorias { width: 100%;
+height: auto;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start; }
+
+.contentCategorias .todasLasCategorias ul { width: 85%;
+height: auto;
+
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+flex-wrap: wrap; }
+
+.contentCategorias .todasLasCategorias ul li { width: 45%;
+color: white;
+font-size: var(--textChico);
+letter-spacing: 2px;
+line-height: 250%;
+
+position: relative; 
+list-style-position: inside; }
+ 
+
+.contentCategorias .todasLasCategorias ul li::marker {
+    position: relative;
+    left: 0px;
+}

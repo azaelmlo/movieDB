@@ -1,3 +1,14 @@
+/* bienvenido  */
+.contentBienvenido h2 {
+    opacity: 0;
+}
+
+.contentBienvenido.visible h2 {
+    opacity: 1;
+}
+
+/* bloque de categorias  */
+
 .contentCategorias { opacity: 0;
 transform: scale(0.9);
 transition: .7s ease-in-out all; }
@@ -8,3 +19,10 @@ transition: .7s ease-in-out all; }
     transform: scale(1);
 }
 
+/* titulo de tendencias  */
+
+.contentTendencias { top: 150px; }
+
+.contentTendencias h3 { top: -150px; }
+
+.contentTendencias.activo, .contentTendencias.activo h3 { top: 0px; }

@@ -18,7 +18,7 @@ const inputBusqueda = document.querySelector('#buscadorPelis #buscar');
 // nodos de tendencias 
 const contentTendencias = document.getElementById('contentTendencias');
 const template = document.getElementById('templateTendencias').content;
-
+const titTendencia = document.querySelector('.contentTendencias h3');
 
 // nodos de categorias 
 const contentCategorias = document.getElementById('contentCategorias');

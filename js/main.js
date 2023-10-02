@@ -70,12 +70,35 @@ const asignarTituloNivelDos = (titNivDos, contentDeTit) => {
     
   }
 
+
+
+ // agregar clase activo a un bloque
+
+ const agregarClaseActivo = (bloqueAc) => {
+    const classes = bloqueAc.getAttribute('class').split(' ');
+    if (classes) {
+      var extrasPageClass = classes.filter(classType => classType.startsWith('activo')); 
+      if (extrasPageClass.length === 0) {
+        bloqueAc.classList.add('activo');
+      } else {
+        bloqueAc.classList.remove('activo');
+      }
+    } else {
+      bloqueAc.classList.add('activo');
+    }
+}
+
+
   // asignacion de titulos nivel tres
 const asignarTituloNivelTres = (titNivTres, contentDeTitTres) => {
 
     if (contentDeTitTres.querySelector('h3') == null) { 
       const clone = templateTitTres.cloneNode(true);
       clone.querySelector('h3').innerHTML = titNivTres;
+      clone.querySelector('h3').onclick = () => {  
+        // agregar clase activo 
+        agregarClaseActivo(contentTendencias) 
+       };
       contentDeTitTres.prepend(clone);
     } else {
       console.log('ya hay titulo 3');
@@ -240,7 +263,7 @@ const verPeliculasPorSearch = async (query) => {
 
 async function getRelatedMovies(id) { 
   const {data} = await api('movie/' + id + '/recommendations');
-  const related = data.results;  
+  const related = data.results; 
   return variasPelis(related, template); 
 }
 
@@ -257,8 +280,8 @@ const verPelicula = async (id) => {
   const ListaDeCategorias = creaListaDeCategorias(movie.genres, templateCate);
   clone.querySelector('ul').appendChild(ListaDeCategorias);
 
-  const relatedMovies = await getRelatedMovies(id);
-  clone.querySelector('.relacionadasContent').appendChild(relatedMovies);
+  const relatedMovies = await getRelatedMovies(id); 
+  clone.querySelector('.relacionadasContent').appendChild(relatedMovies); 
 
   fragmentoMovieDetail.appendChild(clone);
   contentDetailsUnaPeli.innerHTML = '';

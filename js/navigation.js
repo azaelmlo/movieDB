@@ -7,6 +7,11 @@ const homePage = () => {
     
     // title 
    asignarTituloNivelDos('Bienvenido', contentBienvenido);
+
+   // animacion 
+   observaTituloBienvenidaHome();
+   observaCategoriasEnHome();
+ 
 }
 
 const categoryPage = () => {
@@ -22,9 +27,12 @@ const categoryPage = () => {
     }
 
     getCategoriasMovies();
+    // llama a tendencias 
+    getTrendingMoviesPreview();
    
     // title 
    asignarTituloNivelDos('Categorías', contentCategorias);
+ 
 }
 
 
@@ -36,6 +44,10 @@ const moviePage = () => {
         const [_, id] = location.hash.split('=');
         verPelicula(id);  
     }    
+    // llama a tendencias 
+    getTrendingMoviesPreview();
+    // categorias 
+    getCategoriasMovies();
 }
 
 const searchPage = () => {
@@ -49,6 +61,8 @@ const searchPage = () => {
         contentBusqueda.innerHTML = '';
     }
     asignarTituloNivelDos('Busqueda de películas', contentFormulario); 
+    // llama a tendencias 
+    getTrendingMoviesPreview();
 }
 
 
@@ -58,10 +72,13 @@ const trendsPage = () => {
     setClass('pagetrends');
     getTrendingMoviesPreview(); 
     // title 
-    asignarTituloNivelDos('Tendencias', contentTendencias);
+    asignarTituloNivelDos('Conoce las tendencias de la temporada', contentTendencias);
 }
 
 const navigator = () => {
+    // c a m b i o s  e n  l a  n a v e g a c i o n
+    escondeTitulosDos();
+    // - - c a m b i o s  e n  l a  n a v e g a c i o n 
     if (location.hash.startsWith('#trends')) {
         trendsPage();
     } else if (location.hash.startsWith('#search')) {

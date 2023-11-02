@@ -35,7 +35,9 @@ const setClass = (className) => {
 const limpiarPara = (seccion) => {
     if (seccion == 'trends') { 
     contentBienvenido.innerHTML = '';
-    contentDetailsUnaPeli.innerHTML = '';
+    contentDetailsUnaPeli.innerHTML = ''; 
+    contentPeliculasUnaCat.innerHTML = '';
+    contentBusqueda.innerHTML = '';
     } else if (seccion == 'category') {
     contentTendencias.innerHTML = '';
     contentBienvenido.innerHTML = '';
@@ -45,6 +47,7 @@ const limpiarPara = (seccion) => {
       contentTendencias.innerHTML = '';
       contentBienvenido.innerHTML = ''; 
       contentDetailsUnaPeli.innerHTML = '';
+      contentPeliculasUnaCat.innerHTML = '';
     } else if (seccion == 'home') { 
     contentPeliculasUnaCat.innerHTML = '';
     contentBusqueda.innerHTML = '';
@@ -65,26 +68,33 @@ const asignarTituloNivelDos = (titNivDos, contentDeTit) => {
       clone.querySelector('h2').innerHTML = titNivDos;
       contentDeTit.prepend(clone);
     } else {
-      console.log('ya hay titulo');
+      contentDeTit.querySelector('h2').style.display = "block";
+      contentDeTit.querySelector('h2').innerHTML = titNivDos;
     }
     
   }
 
+const escondeTitulosDos = () => {
+  let todosHdos = document.getElementsByTagName('h2');
+  for(let i = 0; i < todosHdos.length; i++) { 
+      todosHdos[i].style.display = 'none'; 
+  }
 
+}
 
  // agregar clase activo a un bloque
 
- const agregarClaseActivo = (bloqueAc) => {
+ const agregarClaseActivo = (bloqueAc, clase) => {
     const classes = bloqueAc.getAttribute('class').split(' ');
     if (classes) {
-      var extrasPageClass = classes.filter(classType => classType.startsWith('activo')); 
+      var extrasPageClass = classes.filter(classType => classType.startsWith(clase)); 
       if (extrasPageClass.length === 0) {
-        bloqueAc.classList.add('activo');
+        bloqueAc.classList.add(clase);
       } else {
-        bloqueAc.classList.remove('activo');
+        bloqueAc.classList.remove(clase);
       }
     } else {
-      bloqueAc.classList.add('activo');
+      bloqueAc.classList.add(clase);
     }
 }
 
@@ -97,7 +107,7 @@ const asignarTituloNivelTres = (titNivTres, contentDeTitTres) => {
       clone.querySelector('h3').innerHTML = titNivTres;
       clone.querySelector('h3').onclick = () => {  
         // agregar clase activo 
-        agregarClaseActivo(contentTendencias) 
+        agregarClaseActivo(contentTendencias, 'activo') 
        };
       contentDeTitTres.prepend(clone);
     } else {
@@ -154,18 +164,27 @@ const creaListaDeCategorias = (genres, template) => {
 // a s i g n a n d o   f o n d o
 
 
-let index = 0;
+var index = 0;
+var intervaloImagenPrincipal;
 
-const changeBackgroundImage = (movies) => {
-  const posterPath = 'https://image.tmdb.org/t/p/w500' + movies[index].poster_path;
-  primerFondo[0].style.backgroundImage = "url(" + posterPath + ")";
 
-  index++;
-  if (index >= movies.length) {
-    index = 0;
+const protocoloIntervalo = (movies) => {
+
+  if ( intervaloImagenPrincipal ) {
+    console.log("esta corriendo el intervalo para la imagen principal")
+  } else {
+    intervaloImagenPrincipal = setInterval(function(){
+
+      const posterPath = 'https://image.tmdb.org/t/p/w500' + movies[index].poster_path;
+      primerFondo[0].style.backgroundImage = "url(" + posterPath + ")";
+    
+      index++;
+      if (index >= movies.length) {
+        index = 0;
+      }
+    }, 5000)
   }
-};
-
+}
 
  
 // a r r o j a n d o   t e n d e n c i a s 
@@ -175,15 +194,18 @@ const getTrendingMoviesPreview = async () => {
   const {data} = await api('trending/all/day');
   const movies = data.results;  
   const trends = variasPelis(movies, template);
-  changeBackgroundImage(movies)
-  setInterval( () => {
-    changeBackgroundImage(movies);
-  }, 5000)
 
-  contentTendencias.innerHTML = '';
-  contentTendencias.appendChild(trends);
+  protocoloIntervalo(movies); 
+  // showSlides(n) activar el slide 
+
+  sliderTendencias.innerHTML = '';
+  sliderTendencias.appendChild(trends);
 
 asignarTituloNivelTres('Tendencias', contentTendencias);
+
+contentTendencias.querySelector('h3').addEventListener('click', function(){
+  location.hash = '#trends'
+} )
 
 }
 
@@ -221,7 +243,9 @@ const getCategoryMoviesPreview = async (categoryId, categoryName) => {
   contentPeliculasUnaCat.appendChild(pelisPorCate);
 
   asignarTituloNivelTres('Peliculas de ' + categoryName, contentPeliculasUnaCat);
-    
+  
+  // animacion 
+  obserVariasPelis();
 }
 
 
@@ -254,7 +278,10 @@ const verPeliculasPorSearch = async (query) => {
   contentBusqueda.innerHTML = '';
   contentBusqueda.appendChild(busqueda);
   asignarTituloNivelTres('Peliculas de ' + query, contentBusqueda);
-    
+
+  
+  // animacion 
+  obserVariasPelis();
 }
 
 // v e r   d e t a l l e   d e   u n a   p e l i c u l a 
@@ -286,6 +313,9 @@ const verPelicula = async (id) => {
   fragmentoMovieDetail.appendChild(clone);
   contentDetailsUnaPeli.innerHTML = '';
   contentDetailsUnaPeli.appendChild(fragmentoMovieDetail);
+
+  // animacion 
+  obserVariasPelis();
 
 }
  

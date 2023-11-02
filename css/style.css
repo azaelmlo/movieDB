@@ -1,12 +1,24 @@
 :root {
+
+    --colorSecundario: #62ffc5;
+
     --grisBack: #2C2C2D;
+    --grisSuave: #494959;
+
     --textChico: 0.8em;
     --textMediano: 1em;
     --textoGrande: 3.4em;
     --textShadow: 0 5px 10px #3f4551;
+
+    --espaciadoGrande: 1px;
+    --espaciadoPeque: 0.4px;
+
+    --borderRadius: 10px;
+    --borderRadiusHard: 20px;
+    --boxShadow: 0px 30px 40px -15px #171723;
 }
 
-.pagehome { background-color: var(--grisBack); }
+.pagehome, .pagetrends { background-color: var(--grisBack); }
 
 * { box-sizing: border-box;
     margin: 0px;
@@ -19,7 +31,9 @@ body {
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: flex-start; }
+justify-content: flex-start;
+position: relative;
+z-index: 44; }
 
 h1 { width: 100%;
 height: auto; 
@@ -51,7 +65,7 @@ text-align: center; }
     background-size: cover;
     background-attachment: fixed; }
 
-.contentBienvenido { width: 100%;
+.pagehome .contentBienvenido { width: 100%;
 height: 60vh;
 
 color: white;
@@ -73,9 +87,6 @@ position: fixed;
 transition: 0.5s;
 transition-property: opacity; }
 
-/* animacion scroll */
-
-
 /* c o n t e n t  f o r m u l a r i o */
 /* c o n t e n t  f o r m u l a r i o */
 /* c o n t e n t  f o r m u l a r i o */
@@ -86,7 +97,7 @@ transition-property: opacity; }
     padding: 10px 0px 15px 25px;
 
     position: fixed;
-    z-index: 88;
+    z-index: 9999;
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
@@ -94,9 +105,9 @@ transition-property: opacity; }
     color: white;
     text-align: center;
 
-    background-image: linear-gradient(to bottom right, #332B68, #3578A9, #332A68);
+    background-color: var(--colorSecundario);
     box-shadow: 0px 30px 40px -15px #171723;
-    border-radius: 10px; }
+    border-radius: var(--borderRadius);  }
 
 
     .contentFormulario form { width: 100%;
@@ -138,9 +149,9 @@ transition-property: opacity; }
 /* t e n d e n c i a s */
 
 
-.contentTendencias { width: 80%;
+.contentTendencias { width: 95%;
     height: auto; 
-    padding: 0px 30px 30px;
+    padding: 0px 10px 30px;
 
     position: relative;
     z-index: 55; 
@@ -153,7 +164,7 @@ transition-property: opacity; }
 
     background-color: var(--grisBack);
     box-shadow: 0px 30px 40px 5px #171723;
-    border-radius: 10px; }
+    border-radius: var(--borderRadius); }
 
     .contentTendencias.acercarTendencias { top: 0px; }
 
@@ -161,7 +172,7 @@ transition-property: opacity; }
 
     .contentTendencias h3, .contentCategorias .todasLasCategorias h3 { font-size: var(--textMediano);
     letter-spacing: 5px;
-    margin: 20px auto 25px;
+    margin: 40px auto;
     color: white;
     text-shadow: 0px 6px 10px #2d3b32; }
 
@@ -203,14 +214,26 @@ transition-property: opacity; }
         transition: 0.7s;
         transition-property: opacity;
 
-        border-radius: 10px;
+        border-radius: var(--borderRadius);
     }
 
     .contentTendencias .tendenciasMovie:hover img {
         opacity: 0.5;
     }
 
-    .slider { width: 100%; }
+    .slider { width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        overflow: hidden;
+        position: relative; }
+
+        .contentTendencias .tendenciasMovie {
+            width: 100%;
+            height: auto;
+            padding: 10px; 
+            position: relative; 
+            min-width: 100%;  }
 
 /* c o n t e n t  c a t e g o r i a s  */
 /* c o n t e n t  c a t e g o r i a s  */
@@ -219,7 +242,7 @@ transition-property: opacity; }
 
 .contentCategorias { width: 90%;
 height: auto;
-padding-bottom: 170px;
+padding-bottom: 160px;
 
 margin-top: 40px;
 padding-top: 30px;
@@ -235,7 +258,12 @@ z-index: -1;
 top: 0px;
 left: 50%;
 transform: translateX(-50%);
-background-color: #485163; }
+background-color: #485163;
+
+transition: 0.7s;
+transition-property: top;
+
+border-radius: 35px 35px 0px 0px; }
 
 .contentCategorias .todasLasCategorias { width: 100%;
 height: auto;
@@ -254,13 +282,16 @@ align-items: flex-start;
 flex-wrap: wrap; }
 
 .contentCategorias .todasLasCategorias ul li { width: 45%;
-color: white;
+color: var(--colorSecundario);
 font-size: var(--textChico);
 letter-spacing: 2px;
 line-height: 250%;
 
 position: relative; 
-list-style-position: inside; }
+list-style-position: inside;
+
+transition: 0.5s;
+transition-property: color, letter-spacing; }
  
 
 .contentCategorias .todasLasCategorias ul li::marker {
@@ -268,13 +299,26 @@ list-style-position: inside; }
     left: 0px;
 }
 
+/* e x c l u s i v o s  h o m e  */
+
+.pagehome .contentCategorias { margin-top: 200px; }
+
+
+
 /* a j u s t e s  d e  e s t i l o  p a r a - M o v i e P a g e  */
 /* a j u s t e s  d e  e s t i l o  p a r a - M o v i e P a g e  */
 
-.pageDetail .primerFondo { position: relative;
-order: 3; }
+.pageDetail { background-color: var(--grisBack); }
 
-.pageDetail .contentBienvenido, .pageDetail .contentTendencias { display: none; } 
+/* .pageDetail .primerFondo, .pagesearch .primerFondo { position: relative;
+    top: -30vh;
+    z-index: 66;
+order: 3;
+border-radius: 40px 40px 0px 0px;
+box-shadow: 0px -30px 40px -15px #171723; } */
+
+/* .pageDetail .contentBienvenido, .pageDetail .contentTendencias, .pagesearch .contentBienvenido { display: none; }  */
+
 
 .pageDetail h1 { position: absolute;
 top: 10px; }
@@ -294,25 +338,206 @@ z-index: 1; }
     justify-content: flex-start; }
 
         .pageDetail .contentDetailsUnaPeli .unDetail img { width: 100%;
-            height: auto; }
+            height: auto;
+            border-radius: 0px 0px 40px 40px;
+            box-shadow: var(--boxShadow); }
 
             .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles { width: 85%;
             height: auto;
-            padding: 15px 25px 25px;
-            border-radius: 10px;
+            padding: 0px 25px;
+            border-radius: var(--borderRadius);
 
             position: relative;
-            top: -100px;
-            background-image: linear-gradient(to bottom right, #332B68, #3578A9, #332A68);
+            top: -25px;
+            background-image: initial;
             color: white; }
 
-            .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles h3 { font-size: 2em;
+            .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles h3 { font-size: var(--textChico);
                 letter-spacing: 3px;
+                text-shadow: var(--textShadow);
                 text-align: center;
                 margin-bottom: 10px; }
 
-                .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles p { margin-bottom: 10px;
+                .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles > p { margin-bottom: 40px;
+                    margin-top: 40px;
                 letter-spacing: 1px; }
+
+                .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles .detailUno { color: var(--colorSecundario); }
+
+                .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles .detailDos { line-height: 100%; }
 
                 .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles ul { padding-left: 30px;
                 margin-bottom: 15px; }
+
+                .pageDetail .contentDetailsUnaPeli .unDetail .masDetalles h4, .pagesearch .contentBusqueda h3 { width: 100%;
+                     font-size: var(--textoGrande);
+                margin-top: 90px;
+                margin-bottom: 30px;
+            line-height: 100%;
+            word-break: break-word; }
+    
+
+    .pageDetail .contentCategorias, .pagesearch .contentCategorias { margin-top: 0px;
+        padding-bottom: 15vh;
+        
+        position: relative;
+        bottom: -100px;
+        z-index: 99; }
+
+        .pageDetail .contentCategorias:before, .pagesearch .contentCategorias:before { width: 96vw;
+            border-radius: var(--borderRadiusHard);
+            box-shadow: var(--boxShadow); }
+
+    .pageDetail .contentCategorias h2 { display: none; }
+
+    .pageDetail .contentCategorias h3 { margin-top: 20px; }
+
+/* s e c c i ó n   d e   C a t e g o r i a s  */
+/* s e c c i ó n   d e   C a t e g o r i a s  */
+/* s e c c i ó n   d e   C a t e g o r i a s  */
+/* s e c c i ó n   d e   C a t e g o r i a s  */
+/* s e c c i ó n   d e   C a t e g o r i a s  */
+
+.pagecategorias { background-color: var(--grisSuave); }
+
+.pagecategorias .contentCategorias { order: 1; }
+
+.pagecategorias .contentCategorias:before {
+    display: none;
+}
+
+.pagecategorias .primerFondo { border-radius: 35px 35px 0px 0px; }
+
+.pagecategorias .primerFondo, .pageDetail .primerFondo, .pagesearch .primerFondo { order: 2;
+position: relative;
+top: initial;
+left: initial;
+transform: initial; }
+
+.pagecategorias .contentBusqueda, .pagecategorias .contentDetailsUnaPeli, .pagecategorias .contentBienvenido { display: none; }
+
+.pagecategorias .contentTendencias, .pageDetail .contentTendencias, .pagesearch .contentTendencias { display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 150px;
+    background-color: transparent;
+    height: 75vh;
+box-shadow: initial; }
+
+    .pagecategorias .contentTendencias h3, .pageDetail .contentTendencias h3, .pagesearch .contentTendencias h3  { font-size: var(--textoGrande);
+    letter-spacing: var(--espaciadoGrande);
+    margin: 0px;
+    line-height: 110%; }
+
+.pagecategorias .contentCategorias { margin-top: 15px;
+    color: white; }
+
+.pagecategorias .contentCategorias h2 { 
+font-size: var(--textMediano);
+text-align: center;
+letter-spacing: var(--espaciadoGrande); }
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria h3 { text-align: center;
+font-size: var(--textoGrande);
+letter-spacing: var(--espaciadoGrande);
+margin-bottom: 40px; }
+
+/* e s t i l o s   p a r  a  u  n a  t a r j e t a  */
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria, .pageDetail .contentDetailsUnaPeli .tendenciasMovie, .pagesearch .contentBusqueda .unResultado  { display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+position: relative;
+
+margin-bottom: 30px; } 
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria img, .pageDetail .contentDetailsUnaPeli .tendenciasMovie img, .pagesearch .contentBusqueda .unResultado img { width: 100%;
+height: auto;
+border-radius: var(--borderRadius); }
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria p, .pageDetail .contentDetailsUnaPeli .tendenciasMovie p, .pagesearch .contentBusqueda .unResultado p { 
+width: 80%;    
+color: white;
+position: absolute;
+right: 50px;
+bottom: 15px;
+text-align: right;
+text-shadow: var(--textShadow); }
+ 
+
+/* p a g i n a   d e   f o r m u a l  r i o  */
+/* p a g i n a   d e   f o r m u a l  r i o  */
+/* p a g i n a   d e   f o r m u a l  r i o  */
+/* p a g i n a   d e   f o r m u a l  r i o  */
+/* p a g i n a   d e   f o r m u a l  r i o  */
+
+.pagesearch { width: 100%; }
+
+.pagesearch h1 {
+    text-shadow: initial;
+    color: var(--grisSuave); 
+}
+
+.pagesearch .contentFormulario { padding-top: 30px;
+padding-bottom: 20px;
+background-image: initial;
+background-color: var(--grisBack); }
+
+.pagesearch .contentFormulario h2 { 
+    width: 100%;
+    position: absolute;
+left: 50%;
+transform: translateX(-50%);
+top: 10px;
+font-size: var(--textChico);
+letter-spacing: 4px; }
+
+.pagesearch .contentBusqueda { width: 80%; }
+
+.pagesearch .contentBusqueda h3 { margin-top: 40px; }
+
+
+
+
+/* p á g i n a   d e   t e n d e n c i a s  */
+/* p á g i n a   d e   t e n d e n c i a s  */
+/* p á g i n a   d e   t e n d e n c i a s  */
+/* p á g i n a   d e   t e n d e n c i a s  */
+
+.pagetrends { }
+
+.pagetrends .primerFondo {
+    
+    position: relative;
+    z-index: 11;
+    top: initial;
+    left: initial;
+    transform: initial; 
+}
+ 
+.pagetrends h1 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+   top: 15px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.pagetrends .contentTendencias {
+   top: 100px;
+   position: absolute;
+   background-color: initial;
+   box-shadow: initial;
+}
+
+.pagetrends .contentTendencias h2 { font-size: 3.4em;
+    line-height: 110%;
+    letter-spacing: 5px;
+    color: white;
+    text-shadow: 0px 6px 10px #2d3b32;
+}
+
+.pagetrends .contentTendencias h3 { display: none; }

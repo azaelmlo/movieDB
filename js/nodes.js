@@ -1,6 +1,6 @@
 
 const bodyPage = document.getElementById('bodyMovie');
-const contentBienvenido = document.getElementById('contentBienvenido')
+const contentBienvenido = document.getElementById('contentBienvenido');
 
 
 const fragmento = document.createDocumentFragment();
@@ -17,6 +17,8 @@ const inputBusqueda = document.querySelector('#buscadorPelis #buscar');
 
 // nodos de tendencias 
 const contentTendencias = document.getElementById('contentTendencias');
+const sliderTendencias = document.getElementById('sliderTendencias');
+
 const template = document.getElementById('templateTendencias').content;
 const titTendencia = document.querySelector('.contentTendencias h3');
 
@@ -31,8 +33,9 @@ const templateCate = document.getElementById('templateCategoria').content;
 
 // peliculas de una categoria 
 
-const contentPeliculasUnaCat = document.getElementById('contentPeliculasDeUnaCategoria')
-const templatePeliculasUnaCat = document.getElementById('templateUnaCategoria').content;
+const contentPeliculasUnaCat = document.getElementById('contentPeliculasDeUnaCategoria');
+const templatePeliculasUnaCat = document.getElementById('templateUnaCategoria').content; 
+
 
 
 // busqueda 

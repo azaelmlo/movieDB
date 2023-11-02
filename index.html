@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,700,0,0" />
-
-    <link rel="stylesheet" href="css/animacion.css">
+    <link rel="stylesheet" href="css/animacion.css"> 
 
 </head>
 <body id="bodyMovie">
@@ -33,9 +32,9 @@
         </form> 
     </div>
     
-    <div id="contentBusqueda">
+    <div id="contentBusqueda" class="contentBusqueda">
         <template id="templateBusqueda">
-            <div class="unResultado">
+            <div class="unResultado animVariasP">
                 <p></p>
                 <img>
             </div>
@@ -45,9 +44,9 @@
     <!-- p o p u l a r e s -->
     
     <div id="contentTendencias" class="contentTendencias">
-        <div class="slider sliderTendencias">
+        <div id="sliderTendencias" class="slider sliderTendencias">
             <template id="templateTendencias">
-                <div class="tendenciasMovie">
+                <div class="tendenciasMovie animVariasP">
                     <p></p>
                     <img>
                 </div>
@@ -76,9 +75,9 @@
 
     <!-- c a t e g o r i a s -->
     <div id="contentCategorias" class="contentCategorias">
-        <div id="contentPeliculasDeUnaCategoria">
+        <div id="contentPeliculasDeUnaCategoria" class="contentPeliculasDeUnaCategoria">
             <template id="templateUnaCategoria">
-                <div class="unaPeliDeCategoria">
+                <div class="unaPeliDeCategoria animVariasP">
                     <p></p>
                     <img>
                 </div>
@@ -102,10 +101,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/secrets.js"></script>
     <script src="js/nodes.js"></script>
+    <script src="js/animation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
-
-    <script src="js/animation.js"></script>
     
 </body>
 </html>

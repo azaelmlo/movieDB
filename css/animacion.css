@@ -1,28 +1,144 @@
+/* s o l o   h o m e  */
+/* s o l o   h o m e  */
+/* s o l o   h o m e  */
+/* s o l o   h o m e  */
+/* s o l o   h o m e  */
+/* s o l o   h o m e  */
+
 /* bienvenido  */
-.contentBienvenido h2 {
+/* bienvenido  */
+.pagehome .contentBienvenido h2 {
     opacity: 0;
 }
 
-.contentBienvenido.visible h2 {
+.pagehome .contentBienvenido.visible h2 {
     opacity: 1;
-}
-
-/* bloque de categorias  */
-
-.contentCategorias { opacity: 0;
-transform: scale(0.9);
-transition: .7s ease-in-out all; }
-
-
-.contentCategorias.visible {
-    opacity: 1;
-    transform: scale(1);
 }
 
 /* titulo de tendencias  */
+/* titulo de tendencias  */
 
-.contentTendencias { top: 150px; }
+.pagehome .contentTendencias { top: 150px; }
 
-.contentTendencias h3 { top: -150px; }
+.pagehome .contentTendencias h3 { top: -150px;
+    transition: .7s ease-in-out all;
+    font-size: 2em;
+transition-property: color, top, font-size; }
 
-.contentTendencias.activo, .contentTendencias.activo h3 { top: 0px; }
+.contentTendencias.activo h3 { 
+    color: var(--colorSecundario);
+    top: 0px;
+    font-size: var(--textoGrande); }
+
+/* bloque de categorias  */
+/* bloque de categorias  */
+
+
+.pagehome .contentCategorias, .pageDetail .contentCategorias, .pagesearch .contentCategorias, .pagetrends .contentCategorias { opacity: 0;
+    transform: scale(0.9);
+    transition: .7s ease-in-out all;
+    transition-property: opacity, transform; }
+    
+    .pagehome .contentCategorias:before { top: 300px;
+    border-radius: 35px 35px 0px 0px; }
+    
+    
+    .pagehome .contentCategorias.visible, .pageDetail .contentCategorias.visible, .pagesearch .contentCategorias.visible, .pagetrends .contentCategorias.visible {
+        opacity: 1;
+        transform: scale(1); 
+    }
+    
+    .pagehome .contentCategorias.visible:before, .pageDetail .contentCategorias.visible:before, .pagesearch .contentCategorias.visible:before, .pagetrends .contentCategorias.visible:before { top: 0px; }
+
+    .pagehome .contentCategorias .todasLasCategorias h3, .pageDetail .contentCategorias .todasLasCategorias h3, .pagesearch .contentCategorias .todasLasCategorias h3, .pagetrends .contentCategorias .todasLasCategorias h3 { transition: 1s ease-in-out all;
+        transition-property: font-size, color;
+        margin: 7vh 0 8vh;
+    padding: 0 7%; }
+
+
+        .pagehome .contentCategorias.visible .todasLasCategorias h3, .pageDetail .contentCategorias.visible .todasLasCategorias h3, .pagesearch .contentCategorias.visible .todasLasCategorias h3, .pagetrends .contentCategorias.visible .todasLasCategorias h3  { 
+            font-size: 3.4em;
+            line-height: 110%; }
+  
+
+
+/* s o l o   c a t e g o r i a s  */
+/* s o l o   c a t e g o r i a s  */
+/* s o l o   c a t e g o r i a s  */
+/* s o l o   c a t e g o r i a s  */
+/* s o l o   c a t e g o r i a s  */
+
+
+/* a n i m a n d o  v a r i a s t a r j e t a s   */
+/* a n i m a n d o  v a r i a s t a r j e t a s   */
+
+/* 
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria, .pagesearch .contentBusqueda .unResultado { transform: scale(0.8);
+    transition: 1s ease-in-out all;
+    transition-property: transform;
+ }
+
+ .pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria p, .pagesearch .contentBusqueda .unResultado p {
+    opacity: 0;
+    transition: 2s ease-in-out all;
+    transition-property: right, opacity, transform;
+ }
+
+ .pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria img, .pagesearch .contentBusqueda .unResultado img {
+    opacity: 0.4;
+    transition: 1s ease-in-out all;
+    transition-property: opacity;
+}
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria.visible, .pagesearch .contentBusqueda .unResultado.visible {
+    transform: scale(1); }
+
+
+
+.pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria.visible img, .pagesearch .contentBusqueda .unResultado.visible img { 
+    opacity: 1;
+}
+
+ .pagecategorias .contentCategorias .contentPeliculasDeUnaCategoria .unaPeliDeCategoria.visible p, .pagesearch .contentBusqueda .unResultado.visible p { 
+    right: 15px;
+    opacity: 1; } */
+
+#bodyMovie .animVariasP { transform: scale(0.8);
+    transition: 1s ease-in-out all;
+    transition-property: transform;
+ }
+
+ #bodyMovie .animVariasP p {
+    opacity: 0;
+    transition: 2s ease-in-out all;
+    transition-property: right, opacity, transform;
+ }
+
+ #bodyMovie .animVariasP img {
+    opacity: 0.4;
+    transition: 1s ease-in-out all;
+    transition-property: opacity;
+}
+
+#bodyMovie .animVariasP.visible {
+    transform: scale(1); }
+
+
+
+#bodyMovie .animVariasP.visible img { 
+    opacity: 1;
+}
+
+#bodyMovie .animVariasP.visible p { 
+    right: 15px;
+    opacity: 1; }
+
+
+/* s o l o   d e t a l l e s  */
+/* s o l o   d e t a l l e s  */
+/* s o l o   d e t a l l e s  */
+/* s o l o   d e t a l l e s  */
+/* s o l o   d e t a l l e s  */
+/* s o l o   d e t a l l e s  */
+
+    .pageDetail .contentCategorias:before { border-radius: 30px; }
